@@ -3,7 +3,7 @@
 
 This game's idea is taken from the My talking Tom game
 <video width="100%" controls>
-                        <source src="" type="video/mp4">
+                        <source src="https://github.com/abdukhalilovazim/telegram-bot-happy-face/blob/main/Happy-Face-Game.mp4" type="video/mp4">
                     </video>
 ### Built With
 
