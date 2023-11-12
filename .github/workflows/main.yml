@@ -18,4 +18,5 @@ jobs:
           script: |
             ls
             cd ${{ secrets.PATH }}
+            ls
             bash ./deploy.sh
