@@ -3,6 +3,7 @@
 set -e
 
 echo "Deploying..."
+ls
 git pull
 
 echo "Deployment complete."

@@ -1,7 +1,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This game's idea is taken from the My talking Tom
+This game's idea is taken from the "My talking Tom"
 <video width="100%" controls>
                         <source src="https://github.com/abdukhalilovazim/telegram-bot-happy-face/blob/main/Happy-Face-Game.mp4" type="video/mp4">
                     </video>
