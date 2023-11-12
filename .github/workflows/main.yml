@@ -1,0 +1,20 @@
+name: Laravel Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ${{ secrets.PATH }}
+            bash ./deploy.sh
