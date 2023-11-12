@@ -16,5 +16,6 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           port: ${{ secrets.PORT }}
           script: |
+            ls
             cd ${{ secrets.PATH }}
             bash ./deploy.sh
