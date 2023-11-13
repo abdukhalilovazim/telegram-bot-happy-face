@@ -1,12 +1,18 @@
 name: Laravel Deploy
+
 on:
   push:
     branches:
       - main
+
 jobs:
   deployment:
     runs-on: ubuntu-latest
+
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Upload to server
         uses: appleboy/ssh-action@master
         with:
@@ -15,7 +21,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           port: ${{ secrets.PORT }}
+          agent: yes  # Use SSH agent to handle key and passphrase
           script: |
             cd ${{ secrets.PATH }}
-            ls
-            bash ./deploy.sh
+            git pull
