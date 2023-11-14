@@ -21,6 +21,6 @@ jobs:
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           port: ${{ secrets.PORT }}
           script: |
-            ls
             cd ${{ secrets.PATH }}
+            ls
             git pull
