@@ -22,5 +22,4 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd ${{ secrets.PATH }}
-            ls
-            git pull
+           bash deploy.sh
