@@ -12,9 +12,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Debug SSH
-        run: ssh -vT -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.USERNAME }}@${{ secrets.HOST }}
-
       - name: Upload to server
         uses: appleboy/ssh-action@master
         with:
