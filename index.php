@@ -2,14 +2,13 @@
 
 const API = "TOKEN"; // bot token
 
-function bot($method, $datas = [])
+function bot($method, $data = [])
 {
-
     $url = "https://api.telegram.org/bot" . API . "/" . $method;
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $datas);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     $res = curl_exec($ch);
     if (curl_error($ch)) {
         var_dump(curl_error($ch));
@@ -17,6 +16,7 @@ function bot($method, $datas = [])
         return json_decode($res);
     }
 }
+
 $level_1 = [
     ['text' => '☺️', 'callback_data' => 'part1'],
     ['text' => '☹️', 'callback_data' => 'wrong'],
@@ -151,7 +151,7 @@ if ($type == "group" || $type == "supergroup") {
     bot('leaveChat', ['chat_id' => $cid]);
     exit();
 }
-$help =  "🔶 I'm a game of finding a smiley face. I'll send you a sad☹️ and a smiling☺️ emoji and you'll find a smiling☺️ emoji.\n\nThere is also a top 10 section of participants with the most points.\n\n⁉️<b>Rules of the game:</b>\n\nAfter the game starts, you are given 5 seconds. You have to find that smiling☺️ emoji within 5 seconds. Find the smiling☺️ emoji,if you find a smiling☺️ emoji, you get 1 point, if you don't find it, it's game over and your score starts at 0. Click the Start Game button to start the game.\n\n👨‍💻 Bot developer: $dev";
+$help = "🔶 I'm a game of finding a smiley face. I'll send you a sad☹️ and a smiling☺️ emoji and you'll find a smiling☺️ emoji.\n\nThere is also a top 10 section of participants with the most points.\n\n⁉️<b>Rules of the game:</b>\n\nAfter the game starts, you are given 5 seconds. You have to find that smiling☺️ emoji within 5 seconds. Find the smiling☺️ emoji,if you find a smiling☺️ emoji, you get 1 point, if you don't find it, it's game over and your score starts at 0. Click the Start Game button to start the game.\n\n👨‍💻 Bot developer: $dev";
 
 function has($folder, $cid)
 {
@@ -162,6 +162,7 @@ function has($folder, $cid)
         file_put_contents($folder . '/' . $cid . '.txt', 0);
     }
 }
+
 has('flood', $cid);
 has('points', $cid);
 
@@ -182,7 +183,7 @@ if ($message) {
             SendMessage($cid, $help, $main);
             break;
         case '/my':
-            SendMessage($cid, "You have earned a total of <b>$point</b> point from the bot\nList of top users\n\n👉/top👈", $main);
+            SendMessage($cid, "You have earned a total of <b>$points</b> point from the bot\nList of top users\n\n👉/top👈", $main);
             break;
         default:
             SendMessage($cid, "this $text Undefined", $main);
